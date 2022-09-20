@@ -61,4 +61,4 @@ jobs:
       - name: Before Install
         run: docker build -t amir/react -f Dockerfile.dev .
       - name: Script
-        run: docker run amir/react npm run test -- --coverage
+        run: docker run -e CI=true amir/react npm run test -- --coverage
