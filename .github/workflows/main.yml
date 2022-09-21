@@ -28,3 +28,10 @@ jobs:
         run: docker build -t amir/react -f Dockerfile.dev .
       - name: Script
         run: docker run -e CI=true amir/react npm run test -- --coverage
+      - name: Docker Login
+        uses: docker login
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Dcoker Push
+        run: docker push amirazam/react:amir/react
